@@ -26,7 +26,7 @@ var core = /^(base|(assemble|generate|templates|updater|verb|toolkit)(-.*?)?)$/;
 function toTree(options) {
   options = options || {};
   var cwd = options.cwd || process.cwd();
-  var stylize = options.stylize || identity;
+  var styles = options.stylize || stylize;
 
   function buildTree(dir, child) {
     child = child || dir;
@@ -35,7 +35,7 @@ function toTree(options) {
     var pkg = require(pkgPath);
     var name = pkg.name;
     var keys = Object.keys(pkg.dependencies || {});
-    var tree = {label: stylize(name, pkg), nodes: []};
+    var tree = {label: styles(name, pkg), nodes: []};
     var deps = keys.filter(function(key) {
       return filter(options)(key, pkg);
     });
@@ -68,7 +68,16 @@ function filter(options) {
       return opts.filter.test(key);
     };
   }
-  return identity;
+
+  return function(key, pkg) {
+    if (/-handle/.test(key)) {
+      return false;
+    }
+    if (core.test(pkg.name) && regex.test(key)) {
+      return true;
+    }
+    return core.test(key);
+  }
 }
 
 /**
@@ -78,10 +87,6 @@ function filter(options) {
 function stylize(name, options) {
   if (options.nocolor === true || options.color === false || options.markdown === true) {
     return name;
-  }
-
-  if (name === 'generate') {
-    return log.bold(name);
   }
 
   var match = /^(assemble|base|generate|templates|updater?|verb)/.exec(name);
@@ -109,30 +114,7 @@ function stylize(name, options) {
 }
 
 /**
- * Return `val`
- */
-
-function identity(val) {
-  return val;
-}
-
-/**
  * Expose `toTree`
  */
 
 module.exports = toTree;
-
-var tree = toTree({
-  stylize: stylize,
-  filter: function(key, pkg) {
-    if (/-handle/.test(key)) {
-      return false;
-    }
-    if (core.test(pkg.name) && regex.test(key)) {
-      return true;
-    }
-    return core.test(key);
-  }
-});
-
-console.log(tree);

@@ -1,6 +1,6 @@
 {
   "name": "toolkit-tree",
-  "description": "Generate a formatted tree for toolkit module dependencies.",
+  "description": "Generates a formatted tree with all toolkit-related module dependencies.",
   "version": "0.1.0",
   "homepage": "https://github.com/jonschlinkert/toolkit-tree",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
@@ -10,9 +10,13 @@
   },
   "license": "MIT",
   "files": [
+    "bin",
     "index.js"
   ],
   "main": "index.js",
+  "bin": {
+    "toolkit-tree": "bin/cli.js"
+  },
   "engines": {
     "node": ">=0.10.0"
   },
@@ -24,8 +28,31 @@
     "extend-shallow": "^2.0.1",
     "log-utils": "^0.2.1"
   },
+  "devDependencies": {
+    "gulp-format-md": "^0.1.11"
+  },
   "keywords": [
     "toolkit",
     "tree"
-  ]
+  ],
+  "verb": {
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "related": {
+      "list": []
+    },
+    "reflinks": [
+      "verb",
+      "verb-generate-readme"
+    ]
+  }
 }
