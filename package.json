@@ -10,8 +10,7 @@
   },
   "license": "MIT",
   "files": [
-    "index.js",
-    "LICENSE"
+    "index.js"
   ],
   "main": "index.js",
   "engines": {
@@ -19,6 +18,11 @@
   },
   "scripts": {
     "test": "mocha"
+  },
+  "dependencies": {
+    "archy": "^1.0.0",
+    "extend-shallow": "^2.0.1",
+    "log-utils": "^0.2.1"
   },
   "keywords": [
     "toolkit",
