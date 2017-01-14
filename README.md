@@ -19,7 +19,7 @@ console.log(toTree());
 
 ## CLI Usage
 
-Run the following from the root of a project.
+Run the following from the root of a [toolkit](https://github.com/node-toolkit) project (any [base](https://github.com/node-base) [generate](https://github.com/generate), [assemble](https://github.com/assemble), [verb](https://github.com/verbose), or [update](https://github.com/update) project):
 
 ```sh
 $ toolkit-tree
