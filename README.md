@@ -1,6 +1,6 @@
 # toolkit-tree [![NPM version](https://img.shields.io/npm/v/toolkit-tree.svg?style=flat)](https://www.npmjs.com/package/toolkit-tree) [![NPM monthly downloads](https://img.shields.io/npm/dm/toolkit-tree.svg?style=flat)](https://npmjs.org/package/toolkit-tree)  [![NPM total downloads](https://img.shields.io/npm/dt/toolkit-tree.svg?style=flat)](https://npmjs.org/package/toolkit-tree)
 
-> Generates a formatted tree with all toolkit-related module dependencies.
+> Generates a formatted tree with all toolkit-related module dependencies. Useful for creating a tree to include in developer documentation of a toolkit project.
 
 ## Install
 
